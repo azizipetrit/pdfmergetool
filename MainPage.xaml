@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PDFMergeTool.Controls"
+             x:Class="PDFMergeTool.MainPage"
+             x:Name="MainPageRoot">
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="20" RowSpacing="15">
+        <!-- Language Switcher -->
+        <controls:LanguageSwitcher Grid.Row="0" HorizontalOptions="End" />
+        
+        <!-- Header with instructions -->
+        <VerticalStackLayout Grid.Row="1" Spacing="10">
+            <Label x:Name="AppTitleLabel" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label x:Name="InstructionsLabel" 
+                   HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+
+        <!-- Main content area -->
+        <Grid Grid.Row="2" RowDefinitions="Auto,*" RowSpacing="15">
+            <!-- Upload controls -->
+            <HorizontalStackLayout Grid.Row="0" Spacing="10" HorizontalOptions="Center">
+                <Button x:Name="UploadFilesButton"
+                        Clicked="OnUploadFilesClicked"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource UploadButtonLight}, Dark={StaticResource UploadButtonDark}}"
+                        TextColor="{AppThemeBinding Light=White, Dark=White}"
+                        HeightRequest="45"
+                        WidthRequest="220"
+                        CornerRadius="8"
+                        ToolTipProperties.Text="{Binding UploadFilesToolTip}" />
+                
+                <Button x:Name="ClearAllFilesButton"
+                        Clicked="OnClearFilesClicked"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource ClearButtonLight}, Dark={StaticResource ClearButtonDark}}"
+                        TextColor="{AppThemeBinding Light=White, Dark=White}"
+                        HeightRequest="45"
+                        WidthRequest="170"
+                        CornerRadius="8"
+                        ToolTipProperties.Text="{Binding ClearAllFilesToolTip}" />
+            </HorizontalStackLayout>
+
+            <!-- Drag & Drop Area + Files List -->
+            <Grid Grid.Row="1" RowDefinitions="Auto,*">
+                <!-- Drag & Drop Area -->
+                <Border Grid.Row="0" 
+                        Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}" 
+                        StrokeThickness="2" 
+                        StrokeShape="RoundRectangle 8" 
+                        StrokeDashArray="4,2"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource DropZoneBackgroundLight}, Dark={StaticResource DropZoneBackgroundDark}}"
+                        Margin="0,0,0,15"
+                        MinimumHeightRequest="80"
+                        x:Name="DropZone">
+                    <Border.GestureRecognizers>
+                        <DropGestureRecognizer DragOver="OnDragOver" Drop="OnDrop" />
+                    </Border.GestureRecognizers>
+                    
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+                        <Image Source="dotnet_bot.png" HeightRequest="40" WidthRequest="40" />
+                        <Label x:Name="DragDropHereLabel"
+                               HorizontalOptions="Center" 
+                               FontSize="16" 
+                               Margin="0,5,0,0" />
+                        <Label x:Name="OrUseUploadLabel"
+                               HorizontalOptions="Center" 
+                               FontSize="12" 
+                               TextColor="{AppThemeBinding Light={StaticResource HintTextLight}, Dark={StaticResource HintTextDark}}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Files List with header -->
+                <Grid Grid.Row="1" RowDefinitions="Auto,*" IsVisible="{Binding HasFiles}">
+                    <!-- Header -->
+                    <Grid Grid.Row="0" ColumnDefinitions="*, Auto, 200, 110" Padding="10" 
+                          BackgroundColor="{AppThemeBinding Light={StaticResource TableHeaderBackgroundLight}, Dark={StaticResource TableHeaderBackgroundDark}}">
+                        <Label x:Name="FileNameLabel" FontAttributes="Bold" Grid.Column="0" VerticalOptions="Center" Margin="5,0,0,0" />
+                        <Label x:Name="InfoLabel" FontAttributes="Bold" Grid.Column="1" VerticalOptions="Center" Margin="10,0" HorizontalOptions="Center" />
+                        <Label x:Name="OrderLabel" FontAttributes="Bold" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label x:Name="ActionsLabel" FontAttributes="Bold" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" />
+                    </Grid>
+
+                    <!-- File List -->
+                    <CollectionView Grid.Row="1" x:Name="FilesCollectionView" ItemsSource="{Binding Files}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="*, Auto, 200, 110" Padding="10" BackgroundColor="{Binding RowColor}">
+                                    <VerticalStackLayout Grid.Column="0" Spacing="2" Padding="5,0">
+                                        <Label Text="{Binding FileName}" FontAttributes="Bold" LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding FilePath}" FontSize="11" TextColor="Gray" LineBreakMode="MiddleTruncation" MaxLines="1" />
+                                    </VerticalStackLayout>
+                                    
+                                    <Label Text="{Binding FileInfo}" Grid.Column="1" VerticalOptions="Center" Margin="10,0" />
+                                    
+                                    <HorizontalStackLayout Grid.Column="2" Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Button Text="⏫" 
+                                                Clicked="OnMoveToTopClicked" 
+                                                CommandParameter="{Binding .}" 
+                                                WidthRequest="40" 
+                                                HeightRequest="35" 
+                                                Padding="0"
+                                                x:Name="MoveToTopButton"
+                                                ToolTipProperties.Text="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.MoveToTopToolTip}"
+                                                Margin="0" />
+                                        <Button Text="▲" 
+                                                Clicked="OnMoveUpClicked" 
+                                                CommandParameter="{Binding .}" 
+                                                WidthRequest="40" 
+                                                HeightRequest="35" 
+                                                Padding="0"
+                                                x:Name="MoveUpButton"
+                                                ToolTipProperties.Text="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.MoveUpToolTip}"
+                                                Margin="0" />
+                                        <Button Text="▼" 
+                                                Clicked="OnMoveDownClicked" 
+                                                CommandParameter="{Binding .}" 
+                                                WidthRequest="40" 
+                                                HeightRequest="35" 
+                                                Padding="0"
+                                                x:Name="MoveDownButton"
+                                                ToolTipProperties.Text="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.MoveDownToolTip}"
+                                                Margin="0" />
+                                        <Button Text="⏬" 
+                                                Clicked="OnMoveToBottomClicked" 
+                                                CommandParameter="{Binding .}" 
+                                                WidthRequest="40" 
+                                                HeightRequest="35" 
+                                                Padding="0"
+                                                x:Name="MoveToBottomButton"
+                                                ToolTipProperties.Text="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.MoveToBottomToolTip}"
+                                                Margin="0" />
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout Grid.Column="3" Spacing="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="8,0,0,0">
+                                        <Button Text="👁️" 
+                                                Clicked="OnPreviewFileClicked" 
+                                                CommandParameter="{Binding .}" 
+                                                BackgroundColor="{AppThemeBinding Light={StaticResource PreviewButtonLight}, Dark={StaticResource PreviewButtonDark}}"
+                                                TextColor="White"
+                                                WidthRequest="40" 
+                                                HeightRequest="35" 
+                                                Padding="0"
+                                                x:Name="PreviewButton"
+                                                ToolTipProperties.Text="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.PreviewPDFToolTip}"
+                                                Margin="0" />
+                                                
+                                        <Button Text="✕" 
+                                                Clicked="OnRemoveFileClicked" 
+                                                CommandParameter="{Binding .}" 
+                                                BackgroundColor="{AppThemeBinding Light={StaticResource RemoveButtonLight}, Dark={StaticResource RemoveButtonDark}}"
+                                                TextColor="White"
+                                                WidthRequest="40" 
+                                                HeightRequest="35" 
+                                                Padding="0"
+                                                x:Name="RemoveFileButton"
+                                                ToolTipProperties.Text="{Binding Source={x:Reference MainPageRoot}, Path=BindingContext.RemoveFileToolTip}"
+                                                Margin="0" />
+                                    </HorizontalStackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                <Label x:Name="NoFilesYetLabel"
+                                       FontSize="18" 
+                                       TextColor="{AppThemeBinding Light={StaticResource EmptyTextLight}, Dark={StaticResource EmptyTextDark}}" />
+                                <Label x:Name="UploadToStartLabel"
+                                       FontSize="14" 
+                                       TextColor="{AppThemeBinding Light={StaticResource SecondaryEmptyTextLight}, Dark={StaticResource SecondaryEmptyTextDark}}" />
+                            </VerticalStackLayout>
+                        </CollectionView.EmptyView>
+                    </CollectionView>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!-- Footer with Merge Button -->
+        <VerticalStackLayout Grid.Row="3" Spacing="10">
+            <Button x:Name="MergePDFsButton"
+                    Clicked="OnMergeClicked" 
+                    IsEnabled="{Binding CanMerge}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource MergeButtonLight}, Dark={StaticResource MergeButtonDark}}" 
+                    TextColor="White"
+                    HeightRequest="50"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    ToolTipProperties.Text="{Binding MergePDFsToolTip}" />
+            
+            <!-- Status message -->
+            <Label x:Name="StatusLabel" 
+                   IsVisible="false"
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
+

@@ -1,0 +1,37 @@
+# .NET MAUI specific .gitignore
+
+# Build results
+[Bb]in/
+[Oo]bj/
+**/[Bb]in/
+**/[Oo]bj/
+**/obj/**/*
+**/bin/**/*
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userprefs
+*.usertasks
+*.userprefs
+.vscode/
+*.vssscc
+
+# NuGet Packages
+*.nupkg
+**/packages/*
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.assets.json
+*.nuget.cache
+/packages/
+project.nuget.cache
+
+# Specific files to ignore
+*.dll
+*.pdb
+*.exe
+*.tmp
+*.log

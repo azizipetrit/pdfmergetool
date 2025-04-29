@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppTitle" xml:space="preserve">
+    <value>PDF Zusammenführungs-Tool</value>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>Laden Sie PDF-Dateien hoch, ordnen Sie sie in der gewünschten Reihenfolge an und führen Sie sie zu einem einzigen Dokument zusammen.</value>
+  </data>
+  <data name="UploadFiles" xml:space="preserve">
+    <value>PDF-Dateien hochladen</value>
+  </data>
+  <data name="ClearAllFiles" xml:space="preserve">
+    <value>Alle Dateien löschen</value>
+  </data>
+  <data name="DragDropHere" xml:space="preserve">
+    <value>PDF-Dateien hier ablegen</value>
+  </data>
+  <data name="OrUseUpload" xml:space="preserve">
+    <value>oder verwenden Sie die Upload-Schaltfläche oben</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Dateiname</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Reihenfolge</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Aktionen</value>
+  </data>
+  <data name="MoveToTop" xml:space="preserve">
+    <value>Nach oben verschieben</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>Nach oben</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>Nach unten</value>
+  </data>
+  <data name="MoveToBottom" xml:space="preserve">
+    <value>Nach unten verschieben</value>
+  </data>
+  <data name="PreviewPDF" xml:space="preserve">
+    <value>PDF-Vorschau</value>
+  </data>
+  <data name="RemoveFile" xml:space="preserve">
+    <value>Datei entfernen</value>
+  </data>
+  <data name="NoFilesYet" xml:space="preserve">
+    <value>Noch keine PDF-Dateien hinzugefügt</value>
+  </data>
+  <data name="UploadToStart" xml:space="preserve">
+    <value>Dateien hochladen oder ziehen, um zu beginnen</value>
+  </data>
+  <data name="MergePDFs" xml:space="preserve">
+    <value>PDFs zusammenführen</value>
+  </data>
+  <data name="AddToBegin" xml:space="preserve">
+    <value>PDF-Dateien hinzufügen, um zu beginnen</value>
+  </data>
+  <data name="AddMoreToEnable" xml:space="preserve">
+    <value>Fügen Sie mindestens eine weitere PDF-Datei hinzu, um das Zusammenführen zu ermöglichen</value>
+  </data>
+  <data name="ReadyToMerge" xml:space="preserve">
+    <value>Bereit, {0} PDF-Dateien zusammenzuführen</value>
+  </data>
+  <data name="PreparingToMerge" xml:space="preserve">
+    <value>Vorbereitung zum Zusammenführen...</value>
+  </data>
+  <data name="OutputLocation" xml:space="preserve">
+    <value>Ausgabeort</value>
+  </data>
+  <data name="WhereToSave" xml:space="preserve">
+    <value>Wo möchten Sie die zusammengeführte PDF speichern?</value>
+  </data>
+  <data name="ChooseLocation" xml:space="preserve">
+    <value>Ort wählen</value>
+  </data>
+  <data name="UseDefault" xml:space="preserve">
+    <value>Standard verwenden</value>
+  </data>
+  <data name="FileName_Prompt" xml:space="preserve">
+    <value>Dateiname</value>
+  </data>
+  <data name="EnterNameForMerged" xml:space="preserve">
+    <value>Geben Sie einen Namen für die zusammengeführte PDF-Datei ein:</value>
+  </data>
+  <data name="FileAlreadyExists" xml:space="preserve">
+    <value>Datei existiert bereits</value>
+  </data>
+  <data name="ReplaceQuestion" xml:space="preserve">
+    <value>{0} existiert bereits. Möchten Sie sie ersetzen?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="MergingPDFs" xml:space="preserve">
+    <value>PDFs werden zusammengeführt...</value>
+  </data>
+  <data name="MergeSuccessful" xml:space="preserve">
+    <value>PDF erfolgreich zusammengeführt!</value>
+  </data>
+  <data name="MergeComplete" xml:space="preserve">
+    <value>Zusammenführen abgeschlossen</value>
+  </data>
+  <data name="MergeSuccessMessage" xml:space="preserve">
+    <value>PDFs erfolgreich zusammengeführt als:\n{0}\n\nMöchten Sie sie jetzt öffnen?</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>Datei öffnen</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="MergeFailedMessage" xml:space="preserve">
+    <value>PDF-Zusammenführung fehlgeschlagen: {0}</value>
+  </data>
+  <data name="MergeFailed" xml:space="preserve">
+    <value>Zusammenführung fehlgeschlagen. Bitte versuchen Sie es erneut.</value>
+  </data>
+  <data name="NotEnoughFiles" xml:space="preserve">
+    <value>Nicht genügend Dateien</value>
+  </data>
+  <data name="NeedTwoFiles" xml:space="preserve">
+    <value>Bitte laden Sie mindestens zwei PDF-Dateien zum Zusammenführen hoch.</value>
+  </data>
+  <data name="InvalidFile" xml:space="preserve">
+    <value>Ungültige Datei</value>
+  </data>
+  <data name="NotValidPDF" xml:space="preserve">
+    <value>{0} ist keine gültige PDF-Datei.</value>
+  </data>
+  <data name="RemoveFileConfirm" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie {0} entfernen möchten?</value>
+  </data>
+  <data name="ClearFilesConfirm" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie alle Dateien entfernen möchten?</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Englisch</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Sprache auswählen</value>
+  </data>
+  <data name="DuplicateFileName" xml:space="preserve">
+    <value>Doppelter Dateiname</value>
+  </data>
+  <data name="FileWithSameNameExists" xml:space="preserve">
+    <value>Eine Datei mit dem Namen "{0}" ist bereits in der Liste vorhanden. Die Dateien könnten unterschiedliche Inhalte haben. Möchten Sie sie trotzdem hinzufügen?</value>
+  </data>
+  <data name="AddAnyway" xml:space="preserve">
+    <value>Trotzdem hinzufügen</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Überspringen</value>
+  </data>
+  <data name="AddedFilesWithDuplicates" xml:space="preserve">
+    <value>{0} Datei(en) hinzugefügt. Hinweis: {1} Datei(en) mit doppelten Namen wurden hinzugefügt.</value>
+  </data>
+</root>
