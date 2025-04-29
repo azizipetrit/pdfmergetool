@@ -12,9 +12,15 @@ PDF Merge Tool is a modern, user-friendly application that allows you to combine
 - **File Management**: Add, remove, and rearrange PDF files before merging
 - **File Preview**: Preview PDF files before merging
 - **Flexible Output Options**: Choose where to save the merged document
+- **Duplicate Detection**: Identifies files with identical names to prevent confusion
+- **Batch Processing**: Merge multiple PDFs at once with no practical limit
+- **File Reordering**: Easily change the order of PDFs with top/up/down/bottom controls
+- **Output Customization**: Choose custom filenames for merged documents
 - **Multi-platform Support**: Works on Windows, macOS, iOS, and Android
 - **Multilingual Interface**: Supports English and German, with a framework in place for additional languages
 - **Dark Mode Support**: Adapts to system light/dark theme settings
+- **Automatic File Validation**: Ensures only valid PDF files are processed
+- **Interactive Success Dialogs**: Option to open merged files immediately after creation
 
 ## System Requirements
 
@@ -54,11 +60,18 @@ The executable will be available in the `bin\Release\net8.0-windows10.0.19041.0\
 2. **Add PDF files** using one of these methods:
    - Drag and drop files onto the designated area
    - Click the "Upload Files" button and select files from your device
-3. **Arrange your files** in the desired order using the arrow buttons
+3. **Arrange your files** in the desired order using the arrow buttons:
+   - Move to top (first position)
+   - Move up (one position higher)
+   - Move down (one position lower)
+   - Move to bottom (last position)
 4. **Review your files** by clicking the preview button (eye icon) next to each file
-5. **Click "Merge PDFs"** when you're ready to combine the files
-6. **Choose where to save** the merged PDF file
-7. **Open the merged file** directly from the success dialog or access it later from your chosen location
+5. **Remove unwanted files** using the delete button (trash icon) next to each file
+6. **Click "Merge PDFs"** when you're ready to combine the files
+7. **Choose where to save** the merged PDF file:
+   - Use default location (same as first input file)
+   - Choose custom location and filename
+8. **Open the merged file** directly from the success dialog or access it later from your chosen location
 
 ## Building from Source
 
@@ -81,6 +94,14 @@ The executable will be available in the `bin\Release\net8.0-windows10.0.19041.0\
 - **.NET MAUI**: Cross-platform UI framework
 - **PDFsharp**: Library for PDF document manipulation
 - **C# / XAML**: Programming languages
+
+## Project Structure
+
+- **Services/**: Contains core functionality like PDF operations and localization
+- **ViewModels/**: Implements MVVM pattern for UI logic
+- **Models/**: Data models for the application
+- **Resources/**: UI resources, localization strings, and assets
+- **Platforms/**: Platform-specific implementation code
 
 ## License
 
